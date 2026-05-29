@@ -14,7 +14,144 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      campaigns: {
+        Row: {
+          body: string
+          bounced_count: number
+          created_at: string
+          delivered_count: number
+          id: string
+          name: string
+          opened_count: number
+          recipient_count: number
+          sent_at: string | null
+          sent_count: number
+          status: string
+          subject: string
+          user_id: string
+        }
+        Insert: {
+          body: string
+          bounced_count?: number
+          created_at?: string
+          delivered_count?: number
+          id?: string
+          name: string
+          opened_count?: number
+          recipient_count?: number
+          sent_at?: string | null
+          sent_count?: number
+          status?: string
+          subject: string
+          user_id: string
+        }
+        Update: {
+          body?: string
+          bounced_count?: number
+          created_at?: string
+          delivered_count?: number
+          id?: string
+          name?: string
+          opened_count?: number
+          recipient_count?: number
+          sent_at?: string | null
+          sent_count?: number
+          status?: string
+          subject?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      csv_uploads: {
+        Row: {
+          created_at: string
+          filename: string
+          id: string
+          row_count: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          filename: string
+          id?: string
+          row_count?: number
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          filename?: string
+          id?: string
+          row_count?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
+      leads: {
+        Row: {
+          address: string | null
+          business_name: string
+          category: string | null
+          created_at: string
+          email: string | null
+          id: string
+          phone: string | null
+          rating: number | null
+          source: string
+          source_label: string | null
+          user_id: string
+          website: string | null
+        }
+        Insert: {
+          address?: string | null
+          business_name: string
+          category?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          phone?: string | null
+          rating?: number | null
+          source?: string
+          source_label?: string | null
+          user_id: string
+          website?: string | null
+        }
+        Update: {
+          address?: string | null
+          business_name?: string
+          category?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          phone?: string | null
+          rating?: number | null
+          source?: string
+          source_label?: string | null
+          user_id?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

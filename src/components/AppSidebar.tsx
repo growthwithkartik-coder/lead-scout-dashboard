@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { LayoutDashboard, Search, Upload, Mail, History, Settings } from "lucide-react";
+import { LayoutDashboard, FolderKanban, PlayCircle, MapPin, Settings } from "lucide-react";
 import logo from "@/assets/logo.jpg";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
@@ -8,12 +8,9 @@ import {
 
 const main = [
   { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
-  { title: "Lead Scraper", url: "/scraper", icon: Search },
-  { title: "CSV Upload", url: "/csv-upload", icon: Upload },
-];
-const email = [
-  { title: "Campaigns", url: "/campaigns", icon: Mail },
-  { title: "History", url: "/history", icon: History },
+  { title: "Categories", url: "/categories", icon: FolderKanban },
+  { title: "New Scrape", url: "/scrape/new", icon: PlayCircle },
+  { title: "Places", url: "/places", icon: MapPin },
 ];
 const sys = [{ title: "Settings", url: "/settings", icon: Settings }];
 
@@ -47,22 +44,17 @@ export function AppSidebar() {
     <Sidebar collapsible="icon">
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2 py-2">
-          <img
-            src={logo}
-            alt="RSC logo"
-            className="h-8 w-8 rounded-md object-cover shadow-md"
-          />
+          <img src={logo} alt="RSC logo" className="h-8 w-8 rounded-md object-cover shadow-md" />
           {!collapsed && (
             <div className="leading-tight">
-              <div className="text-sm font-semibold">RSC</div>
-              <div className="text-[10px] text-muted-foreground">Demo SaaS</div>
+              <div className="text-sm font-semibold">RSC Scraper</div>
+              <div className="text-[10px] text-muted-foreground">Maps Intelligence</div>
             </div>
           )}
         </div>
       </SidebarHeader>
       <SidebarContent>
         {renderGroup("Workspace", main)}
-        {renderGroup("Email", email)}
         {renderGroup("System", sys)}
       </SidebarContent>
     </Sidebar>

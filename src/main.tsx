@@ -8,14 +8,17 @@ import { ThemeProvider } from "@/lib/theme";
 import { AppLayout } from "@/components/AppLayout";
 import Login from "@/pages/Login";
 import Dashboard from "@/pages/Dashboard";
-import Scraper from "@/pages/Scraper";
-import CsvUpload from "@/pages/CsvUpload";
-import Campaigns from "@/pages/Campaigns";
-import History from "@/pages/History";
+import Categories from "@/pages/Categories";
+import CategoryDetails from "@/pages/CategoryDetails";
+import NewScrape from "@/pages/NewScrape";
+import JobDetails from "@/pages/JobDetails";
+import Places from "@/pages/Places";
 import Settings from "@/pages/Settings";
 import "./styles.css";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { retry: 1, refetchOnWindowFocus: false } },
+});
 
 function Protected({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
@@ -36,10 +39,11 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route element={<Protected><AppLayout /></Protected>}>
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/scraper" element={<Scraper />} />
-        <Route path="/csv-upload" element={<CsvUpload />} />
-        <Route path="/campaigns" element={<Campaigns />} />
-        <Route path="/history" element={<History />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/categories/:id" element={<CategoryDetails />} />
+        <Route path="/scrape/new" element={<NewScrape />} />
+        <Route path="/scrape/:jobId" element={<JobDetails />} />
+        <Route path="/places" element={<Places />} />
         <Route path="/settings" element={<Settings />} />
       </Route>
       <Route path="*" element={<Navigate to="/dashboard" replace />} />

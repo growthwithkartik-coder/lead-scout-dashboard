@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { HealthBadge } from "@/components/HealthBadge";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/lib/auth";
 
@@ -20,10 +21,11 @@ export function AppLayout() {
             <div className="flex items-center gap-2">
               <SidebarTrigger />
               <div className="hidden text-sm text-muted-foreground sm:block">
-                Signed in as <span className="font-medium text-foreground">{user?.email}</span>
+                {user?.email}
               </div>
             </div>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-2">
+              <HealthBadge />
               <ThemeToggle />
               <Button
                 variant="ghost"
